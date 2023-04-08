@@ -1,0 +1,9 @@
+name: "Download Artifact"
+description: "Download one more file system paths as artifacts."
+inputs:
+  path:
+    description: "One or more file or directory paths to download."
+    required: true
+runs:
+  using: "node16"
+  main: "lib/main.js"
