@@ -10,7 +10,7 @@ async function main() {
 
         await Promise.all(uniquePaths.map((path) => {
             const name = encodeURIComponent(path);
-            return client.downloadArtifact(name, __dirname);
+            return client.downloadArtifact(name);
         }))
     } catch (err) {
         if (err instanceof Error) setFailed(err);
