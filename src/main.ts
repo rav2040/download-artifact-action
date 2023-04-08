@@ -1,3 +1,4 @@
+import { createHash } from "crypto";
 import { getInput, setFailed } from "@actions/core";
 import { create } from "@actions/artifact";
 
@@ -9,7 +10,7 @@ async function main() {
         const uniquePaths = Array.from(new Set(paths));
 
         await Promise.all(uniquePaths.map((path) => {
-            const name = encodeURIComponent(path);
+            const name = createHash("sha256").update(path).digest("hex");
             return client.downloadArtifact(name);
         }))
     } catch (err) {
